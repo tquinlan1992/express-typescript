@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 
 app.get("/", (req: any, res: any) => {
-    res.send("hello from the angular-gulp-template api server");
+    res.send("hello from the express-typescript server");
 });
 
 var port = process.env.PORT || 3000;
