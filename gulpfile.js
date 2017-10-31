@@ -21,7 +21,7 @@ gulp.task("build-watch", () => {
     gulp.watch(tsconfigContext + tsconfig.include, ['build']);
 });
 
-gulp.task('start-nodemon', function() {
+gulp.task('start-nodemon', ["build"], function() {
     env({file: nodemonEnvJson, var: {
         "MONGO_URL": "mongodb://localhost:27017"
     }});
