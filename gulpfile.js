@@ -7,26 +7,28 @@ const env = require('gulp-env');
 const tsconfig = require(tsconfigContext + "tsconfig.json");
 const sourcemaps = require('gulp-sourcemaps');
 const nodemonEnvJson = '.env.json';
-console.log("tsconfigContext + tsconfig.compilerOptions.include", tsconfigContext + tsconfig.compilerOptions.include);
+const tsconfigOuputDir = tsconfigContext + tsconfig.compilerOptions.outDir;
 
 gulp.task("build", () => {
     return tsProject.src()
         .pipe(sourcemaps.init())
         .pipe(typescript())
         .pipe(sourcemaps.write('./'))
-        .pipe(gulp.dest(tsconfigContext + tsconfig.compilerOptions.outDir));
+        .pipe(gulp.dest(tsconfigOuputDir));
+});
+
+const setUpWatchGlobWithTsconfigContext = tsconfig.include.map(glob => {
+    return tsconfigContext + glob;
 });
 
 gulp.task("build-watch", () => {
-    gulp.watch(tsconfigContext + tsconfig.include, ['build']);
+    gulp.watch(setUpWatchGlobWithTsconfigContext, ['build']);
 });
 
 gulp.task('start-nodemon', ["build"], function() {
-    env({file: nodemonEnvJson, var: {
-        "MONGO_URL": "mongodb://localhost:27017"
-    }});
+    env({file: nodemonEnvJson});
     nodemon({
-        script: 'build/app.js',
+        script: tsconfigOuputDir  + "app.js",
         ext: 'js json',
         ignore: [
             'node_modules/'
