@@ -1,4 +1,7 @@
+const createGulpFileFromTsConfig = require("./createGulpFileFromTsconfig");
+const createGulpFileFromDefaultTs = require("./createGulpFileFromDefaultTS");
+
 module.exports = {
-    createGulpFileFromTsConfig: require("./createGulpFileFromTsConfig"),
-    createGulpFileFromDefaultTs: require("./createGulpFileFromDefaultTs")
+    createGulpFileFromTsConfig,
+    createGulpFileFromDefaultTs
 };
