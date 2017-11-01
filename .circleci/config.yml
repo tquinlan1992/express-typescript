@@ -1,0 +1,7 @@
+version: 2
+jobs:
+ build:
+     machine: true
+     steps:
+       - checkout
+       - run: docker build --rm=false -t $DOCKER_USER/express-typescript:$CIRCLE_BRANCH .
