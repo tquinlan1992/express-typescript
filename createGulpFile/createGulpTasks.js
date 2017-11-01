@@ -1,16 +1,14 @@
 const typescript = require("gulp-typescript");
 const gulp = require("gulp");
-const nodemon = require("gulp-nodemon");
-const env = require('gulp-env');
 const sourcemaps = require('gulp-sourcemaps');
 const path = require("path");
+const gulpTslint = require("gulp-tslint");
 
 function createGulpTasks({
     source,
     tsconfig,
     tsconfigPath,
     outputDir,
-    nodemonEnvJson,
     tsProject
 }) {
 
@@ -23,26 +21,26 @@ function createGulpTasks({
             .pipe(gulp.dest(outputDir));
     });
 
-    const setUpWatchGlobWithTsconfigContext = tsconfig.include.map(glob => {
+    const setUpGlobWithTsconfigContext = tsconfig.include.map(glob => {
         return path.resolve(source, glob);
     });
 
+    const compile = ["tslint", "build"];
 
-    gulp.task("build-watch", () => {
-        gulp.watch(setUpWatchGlobWithTsconfigContext, ['build']);
+
+    gulp.task("build-watch", [...compile], () => {
+        gulp.watch(setUpGlobWithTsconfigContext, [...compile]);
     });
 
-    gulp.task('start-nodemon', ["build"], function() {
-        env({
-            file: nodemonEnvJson
+    gulp.task("tslint", () => {
+        const tsGlob = setUpGlobWithTsconfigContext.map(glob => {
+            return glob + ".ts";
         });
-        nodemon({
-            script: path.resolve(outputDir, "app.js"),
-            ext: 'js json',
-            ignore: [
-                'node_modules/'
-            ]
-        });
+        return gulp.src(tsGlob)
+        .pipe(gulpTslint({
+            formatter: "verbose"
+        }))
+        .pipe(gulpTslint.report());
     });
 }
 

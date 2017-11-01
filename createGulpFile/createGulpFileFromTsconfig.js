@@ -4,8 +4,7 @@ const path = require("path");
 const createGulpTasks = require("./createGulpTasks");
 
 function createGulpFileFromTsconfigContext({
-    tsconfigContext,
-    nodemonEnvJson
+    tsconfigContext
 }) {
     tsconfigContext = appRoot.resolve(tsconfigContext);
 
@@ -21,8 +20,7 @@ function createGulpFileFromTsconfigContext({
         source: tsconfigContext,
         tsConfigPath,
         tsProject,
-        outputDir: tsconfigOuputDir,
-        nodemonEnvJson
+        outputDir: tsconfigOuputDir
     });
 }
 

@@ -1,7 +1,7 @@
-const nodemonEnvJson = '.env.json';
+const gulpConfigJSNotFromTs = require("./createGulpFile/gulp.config.fromts");
+//const gulpConfigJSNotFromTs = require("./createGulpFile/gulp.config.notfromts");
 const createGulpFile = require("./createGulpFile/index");
-const tsconfigContext = "./src/";
 
-createGulpFile.createGulpFileFromTsConfig({tsconfigContext, nodemonEnvJson});
+createGulpFile.createGulpFileFromTsConfig(gulpConfigJSNotFromTs);
 
-//createGulpFile.createGulpFileFromDefaultTsConfig({source: "./src", nodemonEnvJson, outputDir: "./build"});
+//createGulpFile.createGulpFileFromDefaultTs(gulpConfigJSNotFromTs);
