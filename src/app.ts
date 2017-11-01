@@ -3,7 +3,7 @@ const app = express();
 const cors = require('cors');
 const bodyParser = require("body-parser");
 import './connectMongoose';
-import testRoute from "./routes/test";
+import sampleRoute from "./routes/sample";
 
 const corsOptions = {
     origin: [/.*/],
@@ -19,7 +19,7 @@ app.get("/", (req: any, res: any) => {
     res.send("hello from the express-typescript server");
 });
 
-app.get("/testRoute", testRoute);
+app.get("/testRoute", sampleRoute);
 
 var port = process.env.PORT || 3000;
 

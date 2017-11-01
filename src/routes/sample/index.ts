@@ -1,5 +1,7 @@
+const response = require("./response.json");
+
 function testRoute(req: any, res: any) {
-    res.json("testing2");
+    res.json(response);
 }
 
 export default testRoute;

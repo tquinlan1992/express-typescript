@@ -5,10 +5,13 @@
         "noImplicitAny": true,
         "module": "commonjs",
         "target": "ES5",
-        "lib": ["es5", "es6"],
+        "lib": ["es5", "es6", "dom"],
         "noUnusedLocals": true
     },
     "include": [
         "./**/*"
+    ],
+    "exclude": [
+        "node_modules"
     ]
 }
