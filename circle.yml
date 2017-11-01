@@ -1,0 +1,8 @@
+
+machine:
+  services:
+      - docker
+
+test:
+  override:
+      - docker build --rm=false -t $DOCKER_USER/express-typescript:$CIRCLE_BRANCH .
