@@ -6,7 +6,7 @@
     "scripts": {
         "test": "jest",
         "start": "node -r dotenv/config build/app.js dotenv_config_path=.env.dev",
-        "start-watch": "nodemon -r dotenv/config build/app.js dotenv_config_path=.env.dev",
+        "start-watch": "nodemon -L -r dotenv/config build/app.js dotenv_config_path=.env.dev",
         "start-production": "node build/app.js",
         "build": "gulp build",
         "build-watch": "gulp build-watch",

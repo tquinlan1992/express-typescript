@@ -14,4 +14,4 @@ EXPOSE 8000
 CMD . /etc/profile \
     && cd /server-app \
     && nvm use \
-    && node build/app.js
+    && npm run start-build-watch

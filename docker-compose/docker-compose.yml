@@ -9,8 +9,6 @@ services:
   server:
     image:            tquinlan1992/express-typescript
     container_name:   express-typescript
-    environment:
-        MONGO_URL: ${MONGO_URL}
     build:
         context:      ../
     volumes:
