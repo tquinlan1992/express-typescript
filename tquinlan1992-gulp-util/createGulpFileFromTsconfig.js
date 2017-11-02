@@ -18,7 +18,6 @@ function createGulpFileFromTsconfigContext({
     createGulpTasks({
         tsconfig,
         source: tsconfigContext,
-        tsConfigPath,
         tsProject,
         outputDir: tsconfigOuputDir
     });
