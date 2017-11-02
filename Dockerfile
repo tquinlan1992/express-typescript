@@ -14,4 +14,4 @@ EXPOSE 8000
 CMD . /etc/profile \
     && cd /server-app \
     && nvm use \
-    && npm start
+    && node build/app.js

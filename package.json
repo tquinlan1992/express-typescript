@@ -7,6 +7,7 @@
         "test": "jest",
         "start": "node -r dotenv/config build/app.js dotenv_config_path=.env.dev",
         "start-watch": "nodemon -r dotenv/config build/app.js dotenv_config_path=.env.dev",
+        "start-production": "node build/app.js",
         "build": "gulp build",
         "build-watch": "gulp build-watch",
         "start-build-watch": "concurrently -r 'npm run start-watch' 'npm run build-watch'",

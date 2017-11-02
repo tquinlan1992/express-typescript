@@ -1,0 +1,26 @@
+version:              '3.2'
+
+services:
+  mongodb:
+    image:          mongo:latest
+    container_name: mongodb
+    volumes:
+       - data:/data/db
+  server:
+    image:            tquinlan1992/express-typescript
+    container_name:   express-typescript
+    build:
+        context:      ../
+    volumes:
+       - type:        bind
+         source:      ../src
+         target:      /server-app/src
+    ports:
+       - "3000:3000"
+    links:
+       - mongodb
+    depends_on:
+       - mongodb
+
+volumes:
+  data:               {}
