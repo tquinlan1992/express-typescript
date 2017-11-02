@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 
 app.get("/", (req: any, res: any) => {
-    res.send("hello from the express-typescript server now?");
+    res.send("hello from the express-typescript server now?, changed to something else");
 });
 
 app.get("/testRoute", sampleRoute);

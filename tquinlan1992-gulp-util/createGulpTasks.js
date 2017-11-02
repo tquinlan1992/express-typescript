@@ -8,7 +8,6 @@ const del = require('del');
 function createGulpTasks({
     source,
     tsconfig,
-    tsconfigPath,
     outputDir,
     tsProject
 }) {
