@@ -1,17 +1,13 @@
-FROM tquinlan1992/debian-nvm
+FROM node:carbon
 
 COPY . /server-app/
 
-RUN . /etc/profile && \
-	cd /server-app && \
-	nvm install && \
+RUN cd /server-app && \
 	npm install && \
 	npm test && \
     npm run build
 
 EXPOSE 8000
 
-CMD . /etc/profile \
-    && cd /server-app \
-    && nvm use \
+CMD cd /server-app \
     && npm run start-build-watch
